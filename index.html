@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>福興國小 六年甲班 教材</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-light: #60a5fa;
+      --accent-science: #ef4444;
+      --accent-math: #f59e0b;
+      --teal: #0d9488;
+      --emerald: #10b981;
+      --indigo: #4f46e5;
+      --purple: #8b5cf6;
+      --bg: #f0f6ff;
+      --card-bg: rgba(255, 255, 255, 0.94);
+      --card-border: #dbeafe;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 12px 28px -4px rgba(37, 99, 235, 0.12);
+      --shadow-lg: 0 22px 45px -8px rgba(30, 58, 138, 0.18);
+      --radius-md: 18px;
+      --radius-lg: 26px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Noto Sans TC', system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at 10% 20%, #e0f2fe 0%, #eff6ff 40%, #fdf4ff 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.6;
+    }
+
+    /* 頂部裝飾條與頁首 */
+    header {
+      background: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #3b82f6 100%);
+      color: #ffffff;
+      padding: 24px 20px;
+      box-shadow: 0 10px 30px rgba(30, 64, 175, 0.22);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -20%;
+      width: 140%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 10%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 99px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .header-desc {
+      font-size: clamp(14px, 1.8vw, 16px);
+      opacity: 0.92;
+      font-weight: 500;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* 主要容器 */
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 92%;
+      margin: 28px auto 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    /* ========================================= */
+    /* 首頁上方：QR Code 行動學習卡片            */
+    /* ========================================= */
+    .qr-banner-card {
+      background: var(--card-bg);
+      border: 2px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 24px 30px;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      flex-wrap: wrap;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .qr-banner-card:hover {
+      box-shadow: var(--shadow-lg);
+      border-color: #bfdbfe;
+    }
+
+    .qr-info-left {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .qr-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      background: #e0f2fe;
+      color: #0369a1;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .qr-info-left h2 {
+      font-size: clamp(20px, 2.5vw, 24px);
+      font-weight: 900;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .qr-info-left p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .device-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .device-pill {
+      background: #f1f5f9;
+      color: #475569;
+      padding: 6px 12px;
+      border-radius: 99px;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* QR Code 圖形包裝框 */
+    .qr-wrapper {
+      flex-shrink: 0;
+      text-align: center;
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+      padding: 16px;
+      border-radius: 20px;
+      border: 2px dashed #93c5fd;
+      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.08);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .qr-wrapper:hover {
+      transform: scale(1.04) rotate(-1deg);
+      border-color: var(--primary);
+    }
+
+    .qr-img {
+      width: 140px;
+      height: 140px;
+      display: block;
+      border-radius: 12px;
+      object-fit: contain;
+      image-rendering: pixelated;
+    }
+
+    .qr-hint {
+      margin-top: 8px;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: 0.3px;
+    }
+
+    /* ========================================= */
+    /* 雙模組導覽卡片區 (自然 vs 數學)            */
+    /* ========================================= */
+    .section-title {
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    .module-card {
+      background: var(--card-bg);
+      border: 2px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      text-decoration: none;
+      color: inherit;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .module-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* 頂部彩色裝飾線條 */
+    .module-card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      transition: height 0.2s;
+    }
+
+    .module-science:hover { border-color: #fca5a5; }
+    .module-science::after { background: linear-gradient(90deg, #ef4444, #f97316); }
+
+    .module-math:hover { border-color: #93c5fd; }
+    .module-math::after { background: linear-gradient(90deg, #2563eb, #8b5cf6); }
+
+    /* 卡片頭部 */
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .card-icon-box {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      flex-shrink: 0;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.25s ease;
+    }
+
+    .module-card:hover .card-icon-box {
+      transform: scale(1.1) rotate(4deg);
+    }
+
+    .module-science .card-icon-box {
+      background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+      color: #dc2626;
+      border: 1px solid #fca5a5;
+    }
+
+    .module-math .card-icon-box {
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      color: #1d4ed8;
+      border: 1px solid #93c5fd;
+    }
+
+    .card-header-text {
+      flex: 1;
+    }
+
+    .subject-pill {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 99px;
+      margin-bottom: 6px;
+    }
+
+    .module-science .subject-pill {
+      background: #fee2e2;
+      color: #b91c1c;
+    }
+
+    .module-math .subject-pill {
+      background: #e0e7ff;
+      color: #3730a3;
+    }
+
+    .card-title {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--text-main);
+      line-height: 1.3;
+    }
+
+    /* 卡片內文特色列表 */
+    .card-body {
+      margin-bottom: 24px;
+    }
+
+    .card-summary {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .feature-tags {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .feature-tags li {
+      font-size: 13px;
+      font-weight: 700;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .feature-tags li span.bullet {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
+    .module-science .feature-tags li span.bullet { background: #ef4444; }
+    .module-math .feature-tags li span.bullet { background: #3b82f6; }
+
+    /* 按鈕樣式 */
+    .cta-button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 800;
+      color: #ffffff;
+      text-decoration: none;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+    }
+
+    .module-science .cta-button {
+      background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+      box-shadow: 0 6px 16px rgba(239, 68, 68, 0.3);
+    }
+
+    .module-science .cta-button:hover {
+      box-shadow: 0 8px 22px rgba(239, 68, 68, 0.45);
+    }
+
+    .module-math .cta-button {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+    }
+
+    .module-math .cta-button:hover {
+      box-shadow: 0 8px 22px rgba(37, 99, 235, 0.45);
+    }
+
+    .cta-arrow {
+      font-size: 18px;
+      transition: transform 0.2s ease;
+    }
+
+    .module-card:hover .cta-arrow {
+      transform: translateX(4px);
+    }
+
+    /* 頁尾 */
+    footer {
+      background: #ffffff;
+      border-top: 1px solid #e2e8f0;
+      text-align: center;
+      padding: 24px 20px;
+      color: var(--text-muted);
+      font-size: 13px;
+      margin-top: auto;
+    }
+
+    footer p {
+      margin-bottom: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .qr-banner-card {
+        flex-direction: column;
+        text-align: center;
+      }
+      .qr-info-left {
+        min-width: 100%;
+      }
+      .device-pills {
+        justify-content: center;
+      }
+      .qr-wrapper {
+        margin: 0 auto;
+      }
+      .card-top {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 頂部頁首 -->
+  <header>
+    <div class="header-inner">
+      <div class="header-badge">🌟 數位互動學習教室</div>
+      <h1>福興國小 六年甲班 教材</h1>
+      <p class="header-desc">
+        動手操作、即時動畫、探索原理！自然科學「電與磁」與空間幾何「3D立體圖與展開圖」互動學習平台。
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========================================= -->
+    <!-- 首頁上方：QR Code 掃描即學卡片             -->
+    <!-- ========================================= -->
+    <section class="qr-banner-card">
+      <div class="qr-info-left">
+        <div class="qr-tag">📱 行動跨載具支援</div>
+        <h2>掃描 QR Code，隨時在平板或手機上操作！</h2>
+        <p>
+          教室投影、學生平板分組探索、或回家複習皆適用。拿起手機或平板相機掃描右方條碼，即可立即載入雙模組互動動畫！
+        </p>
+        <div class="device-pills">
+          <span class="device-pill">💻 電腦筆電</span>
+          <span class="device-pill">📱 iPad / 平板</span>
+          <span class="device-pill">📲 智慧手機</span>
+          <span class="device-pill">🖥️ 觸控大螢幕</span>
+        </div>
+      </div>
+
+      <div class="qr-wrapper">
+        <img src="qrcode.png" alt="國小六年級學習網 QR Code" class="qr-img">
+        <div class="qr-hint">相機掃碼立即開啟</div>
+      </div>
+    </section>
+
+    <!-- ========================================= -->
+    <!-- 模組快速導覽區                             -->
+    <!-- ========================================= -->
+    <div>
+      <div class="section-title">
+        <span>🚀</span> 請選擇要探索的單元主題：
+      </div>
+    </div>
+
+    <section class="modules-grid">
+      <!-- 模組 1: 電動機 (連結到 a1.html) -->
+      <a href="a1.html" class="module-card module-science">
+        <div>
+          <div class="card-top">
+            <div class="card-icon-box">⚡</div>
+            <div class="card-header-text">
+              <span class="subject-pill">六年級自然科學</span>
+              <h2 class="card-title">電動機 (馬達) 互動實驗室</h2>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <p class="card-summary">
+              觀察線圈在磁場中受力旋轉，深入了解「電流 ＋ 磁場 → 產生運動」的電磁轉換原理。
+            </p>
+            <ul class="feature-tags">
+              <li><span class="bullet"></span> <strong>電生磁動態：</strong>永久磁鐵 (N/S) 與通電線圈交互作用</li>
+              <li><span class="bullet"></span> <strong>即時操作：</strong>啟動／暫停轉動、反轉電流改變轉向</li>
+              <li><span class="bullet"></span> <strong>磁力線顯隱：</strong>觀察看不見的磁場空間分布</li>
+              <li><span class="bullet"></span> <strong>元件重點解析：</strong>電刷、換向器、轉軸構造圖解</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="cta-button">
+          <span>進入電動機實驗室 (a1.html)</span>
+          <span class="cta-arrow">➔</span>
+        </div>
+      </a>
+
+      <!-- 模組 2: 展開圖 (連結到 a2.html) -->
+      <a href="a2.html" class="module-card module-math">
+        <div>
+          <div class="card-top">
+            <div class="card-icon-box">📐</div>
+            <div class="card-header-text">
+              <span class="subject-pill">六年級空間幾何</span>
+              <h2 class="card-title">3D 立體圖與展開圖實驗室</h2>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <p class="card-summary">
+              拖動滑桿直觀體驗立體圖與平面展開圖的連續摺疊過程，徹底掌握面、邊、頂點關係。
+            </p>
+            <ul class="feature-tags">
+              <li><span class="bullet"></span> <strong>8 大立體形體：</strong>正方體、長方體、角柱、角錐、圓柱與圓錐</li>
+              <li><span class="bullet"></span> <strong>連續摺疊動畫：</strong>0% 摺合 ⟷ 100% 攤平展開無級拖曳</li>
+              <li><span class="bullet"></span> <strong>正方體 11 種展開圖：</strong>全覽驗證 ＋ 凹字／田字錯誤示範</li>
+              <li><span class="bullet"></span> <strong>互動測驗與速查：</strong>找對面神技、8 題隨堂小測驗與公式表</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="cta-button">
+          <span>進入展開圖實驗室 (a2.html)</span>
+          <span class="cta-arrow">➔</span>
+        </div>
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <p>福興國小 六年甲班 教材｜自然與生活科技・數學領域輔助教學</p>
+    <p style="opacity: 0.7; font-size: 12px;">支援各類瀏覽器、平板觸控與電子白板教學</p>
+  </footer>
+
+</body>
+</html>
